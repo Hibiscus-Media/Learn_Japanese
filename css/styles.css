@@ -60,7 +60,7 @@ h2 {
 
 .gallery img {
   width: 100%;
-  max-width: 300px; /* Larger images for more impact */
+  max-width: 400px; /* Increased max-width for larger images on bigger screens */
   border-radius: 15px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.15); /* Initial subtle shadow */
@@ -79,7 +79,8 @@ body.dark-mode .gallery img {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .gallery img {
-    max-width: 200px; /* Adjust image size for smaller screens */
+    max-width: 90vw; /* Make images take up almost the entire screen width on smaller devices */
+    margin-bottom: 20px; /* Add space between images */
   }
   
   h1 {
@@ -88,6 +89,13 @@ body.dark-mode .gallery img {
   
   h2 {
     font-size: 1.5em; /* Adjust section title size for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery img {
+    max-width: 100vw; /* On very small screens, use full width */
+    border-radius: 10px; /* Adjust border radius for smaller screens */
   }
 }
 
