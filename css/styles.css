@@ -1,0 +1,42 @@
+h2 {
+    margin-top: 40px;
+    text-align: center; /* Center the heading text */
+    color: #333;
+}
+
+/* Additional Styles */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px; /* Increased gap between images */
+    justify-content: center;
+    padding: 20px; /* Add padding for spacing */
+}
+
+.gallery img {
+    width: calc(100% / 3 - 20px); /* Three images per row on larger screens */
+    max-width: 100%;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 800px) {
+    .gallery img {
+        width: calc(100% / 2 - 20px); /* Two images per row on medium screens */
+    }
+}
+
+@media (max-width: 500px) {
+    .gallery img {
+        width: calc(100% - 20px); /* One image per row on small screens */
+    }
+
+    .gallery {
+        gap: 20px; /* Adjust gap for smaller screens */
+    }
+}
