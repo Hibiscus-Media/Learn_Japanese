@@ -1,27 +1,51 @@
 <!DOCTYPE html>
 <html lang='en'>
-<head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'>
-<title>Kanji Practice</title>
-<link rel='stylesheet' href='css/styles.css'>
-<script src='https://unpkg.com/aos@2.3.1/dist/aos.js'></script>
-<script src='js/script.js'></script>
-</head><body class='light'>
-<h1>Kanji Practice</h1>
-<div id='contents'><h2>Contents</h2><ul id='contents-list'></ul></div>
-<div id='kanji-sections'></div>
-<script>const contentsList = document.getElementById('contents-list');
-const listItem = document.createElement('li');
-listItem.innerHTML = '<a href="#Days_Of_Week">Days Of Week</a>';
-contentsList.appendChild(listItem);</script>
-<div id='Days_Of_Week'><h2>Days Of Week</h2><div class='gallery' data-aos='fade-up'>
-<img src='Kanji/Days_Of_Week/1-Monday.jpeg' alt='Days_Of_Week Image'>
-<img src='Kanji/Days_Of_Week/2-Tuesday.jpeg' alt='Days_Of_Week Image'>
-<img src='Kanji/Days_Of_Week/3-Wednesday.jpeg' alt='Days_Of_Week Image'>
-<img src='Kanji/Days_Of_Week/4-Thusday.jpeg' alt='Days_Of_Week Image'>
-<img src='Kanji/Days_Of_Week/5-Friday.jpeg' alt='Days_Of_Week Image'>
-<img src='Kanji/Days_Of_Week/6-Saturday.jpeg' alt='Days_Of_Week Image'>
-<img src='Kanji/Days_Of_Week/7-Sunday.jpeg' alt='Days_Of_Week Image'>
-<img src='Kanji/Days_Of_Week/Banner.jpeg' alt='Days_Of_Week Image'>
-</div></div>
-<script>AOS.init();</script>
-</body></html>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Kanji Practice</title>
+    <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap' rel='stylesheet'>
+    <link rel='stylesheet' href='css/styles.css'>
+    <link href='https://unpkg.com/aos@2.3.1/dist/aos.css' rel='stylesheet'>
+    <script src='https://unpkg.com/aos@2.3.1/dist/aos.js'></script>
+</head>
+<body class='light'>
+
+    <h1>Kanji Practice</h1>
+
+    <div id='contents'>
+        <h2>Contents</h2>
+        <ul id='contents-list'></ul> <!-- Dynamic list will be populated here -->
+    </div>
+
+    <div id='kanji-sections'></div> <!-- Sections for each folder will be populated here -->
+
+    <script>
+        const folderNames = ['Days_Of_Week', 'Numbers', 'Months']; // Adjust as needed
+
+        const contentsList = document.getElementById('contents-list');
+        const kanjiSections = document.getElementById('kanji-sections');
+
+        folderNames.forEach(folder => {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `<a href="#${folder}">${folder.replace(/_/g, ' ')}</a>`;
+            contentsList.appendChild(listItem);
+
+            const section = document.createElement('div');
+            section.id = folder;
+            section.innerHTML = `<h2>${folder.replace(/_/g, ' ')}</h2><div class='gallery' data-aos='fade-up'></div>`;
+            kanjiSections.appendChild(section);
+
+            for (let i = 1; i <= 7; i++) { // Assuming 7 images in each folder
+                const img = document.createElement('img');
+                img.src = `Kanji/${folder}/${i}.jpeg`; // Ensure correct paths
+                img.alt = `${folder} Image ${i}`;
+                section.querySelector('.gallery').appendChild(img);
+            }
+        });
+
+        AOS.init();
+    </script>
+
+</body>
+</html>
