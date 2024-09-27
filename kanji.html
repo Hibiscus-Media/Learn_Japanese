@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Kanji Practice</title>
+    <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap' rel='stylesheet'>
+    <link rel='stylesheet' href='css/styles.css'>
+    <link href='https://unpkg.com/aos@2.3.1/dist/aos.css' rel='stylesheet'>
+</head>
+<body class="light">
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Kanji Practice</h1>
+        <p>Learn the basics of Kanji with visual aids!</p>
+    </div>
+
+    <div class="toggle-container">
+        <span class="toggle-label">Light Mode</span>
+        <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider"></span>
+        </label>
+        <span class="toggle-label">Dark Mode</span>
+    </div>
+
+    <div id="contents">
+        <h2>Contents</h2>
+        <ul id="contents-list"></ul> <!-- Dynamic list will be populated here -->
+    </div>
+
+    <!-- Sections for each folder -->
+    <div id="kanji-sections"></div>
+
+    <!-- AOS JavaScript for scroll animations -->
+    <script src='https://unpkg.com/aos@2.3.1/dist/aos.js'></script>
+    <script src="js/script.js"></script> <!-- Link to your JavaScript file -->
+    <script>
+        // Sample folder names for demonstration purposes
+        const folderNames = ['Days_Of_Week', 'Numbers', 'Months']; // Adjust as needed
+
+        // Populate contents section and kanji sections dynamically
+        const contentsList = document.getElementById('contents-list');
+        const kanjiSections = document.getElementById('kanji-sections');
+
+        folderNames.forEach(folder => {
+            // Create list item for contents
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `<a href="#${folder}">${folder.replace(/_/g, ' ')}</a>`;
+            contentsList.appendChild(listItem);
+
+            // Create section for each folder
+            const section = document.createElement('div');
+            section.id = folder;
+            section.innerHTML = `<h2>${folder.replace(/_/g, ' ')}</h2><div class='gallery' data-aos='fade-up'></div>`;
+            kanjiSections.appendChild(section);
+
+            // Add images dynamically (Assuming images are named "1.jpg", "2.jpg", ...)
+            for (let i = 1; i <= 7; i++) { // Adjust based on the actual number of images
+                const img = document.createElement('img');
+                img.src = `Kanji/${folder}/${i}.jpg`; // Adjust the path as needed
+                img.alt = `${folder} Image ${i}`;
+                section.querySelector('.gallery').appendChild(img);
+            }
+        });
+
+        // Initialize AOS
+        AOS.init();
+    </script>
+</body>
+</html>
