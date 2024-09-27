@@ -1,54 +1,33 @@
 <!DOCTYPE html>
 <html lang='en'>
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>Kanji Practice</title>
-    <link rel='stylesheet' href='css/styles.css'>
-    <link href='https://unpkg.com/aos@2.3.1/dist/aos.css' rel='stylesheet'>
-    <script src='https://unpkg.com/aos@2.3.1/dist/aos.js'></script>
-</head>
-<body class='light'>
-
-    <h1>Kanji Practice</h1>
-
-    <div id='contents'>
-        <h2>Contents</h2>
-        <ul id='contents-list'></ul> <!-- Dynamic list will be populated here -->
-    </div>
-
-    <div id='kanji-sections'></div> <!-- Sections for each folder will be populated here -->
-
-    <script>
-        // Array of folder names
-        const folderNames = ['Days_Of_Week']; // You can add more folder names as needed
-        const contentsList = document.getElementById('contents-list');
-        const kanjiSections = document.getElementById('kanji-sections');
-
-        folderNames.forEach(folder => {
-            // Create list item for contents
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `<a href="#${folder}">${folder.replace(/_/g, ' ')}</a>`;
-            contentsList.appendChild(listItem);
-
-            // Create section for each folder
-            const section = document.createElement('div');
-            section.id = folder;
-            section.innerHTML = `<h2>${folder.replace(/_/g, ' ')}</h2><div class='gallery' data-aos='fade-up'></div>`;
-            kanjiSections.appendChild(section);
-
-            // Dynamically add images from the folder
-            for (let i = 1; i <= 7; i++) { // Assuming you have 7 images in each folder
-                const img = document.createElement('img');
-                img.src = `Kanji/${folder}/${i}-*.jpeg`; // Adjust this based on your actual image names
-                img.alt = `${folder} Image ${i}`;
-                section.querySelector('.gallery').appendChild(img);
-            }
-        });
-
-        // Initialize AOS for animations
-        AOS.init();
-    </script>
-
-</body>
-</html>
+<head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>Kanji Practice</title>
+<link rel='stylesheet' href='css/styles.css'>
+<link href='https://unpkg.com/aos@2.3.1/dist/aos.css' rel='stylesheet'>
+<script src='https://unpkg.com/aos@2.3.1/dist/aos.js'></script>
+</head><body class='light'>
+<h1>Kanji Practice</h1>
+<div id='contents'><h2>Contents</h2><ul id='contents-list'></ul></div>
+<div id='kanji-sections'></div>
+<script>
+const folderNames = ['Days_Of_Week'];
+const contentsList = document.getElementById('contents-list');
+const kanjiSections = document.getElementById('kanji-sections');
+folderNames.forEach(folder => {
+    const listItem = document.createElement('li');
+    listItem.innerHTML = ;
+    contentsList.appendChild(listItem);
+    const section = document.createElement('div');
+    section.id = folder;
+    section.innerHTML = ;
+    kanjiSections.appendChild(section);
+    for (let i = 1; i <= 7; i++) {
+        const img = document.createElement('img');
+        img.src = ;
+        img.alt = `Phrases/Day10 Image ${i}`;
+        section.querySelector('.gallery').appendChild(img);
+    }
+});
+AOS.init();
+</script>
+</body></html>
