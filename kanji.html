@@ -1,34 +1,27 @@
 <!DOCTYPE html>
 <html lang='en'>
-<head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'>
-<title>Kanji Practice</title>
-<link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap' rel='stylesheet'>
-<link rel='stylesheet' href='css/styles.css'>
-<link href='https://unpkg.com/aos@2.3.1/dist/aos.css' rel='stylesheet'>
-<script src='https://unpkg.com/aos@2.3.1/dist/aos.js'></script>
-</head><body class='light'>
-<h1>Kanji Practice</h1>
-<div id='contents'><h2>Contents</h2><ul id='contents-list'></ul></div>
-<div id='kanji-sections'></div>
-<script>
-const folderNames = ['Days_Of_Week'];
-const contentsList = document.getElementById('contents-list');
-const kanjiSections = document.getElementById('kanji-sections');
-folderNames.forEach(folder => {
-    const listItem = document.createElement('li');
-    listItem.innerHTML = ;
-    contentsList.appendChild(listItem);
-    const section = document.createElement('div');
-    section.id = folder;
-    section.innerHTML = ;
-    kanjiSections.appendChild(section);
-    for (let i = 1; i <= 7; i++) {
-        const img = document.createElement('img');
-        img.src = `Kanji/${folder}/kanji${i}.jpeg`;
-        img.alt = `Phrases/Day10 Image ${i}`;
-        section.querySelector('.gallery').appendChild(img);
-    }
-});
-AOS.init();
-</script>
-</body></html>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Kanji Practice</title>
+    <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap' rel='stylesheet'>
+    <link rel='stylesheet' href='css/styles.css'>
+    <link href='https://unpkg.com/aos@2.3.1/dist/aos.css' rel='stylesheet'>
+    <script src='https://unpkg.com/aos@2.3.1/dist/aos.js'></script>
+</head>
+<body class='light'>
+    <h1>Kanji Practice</h1>
+    
+    <!-- Contents List -->
+    <div id='contents'>
+        <h2>Contents</h2>
+        <ul id='contents-list'></ul> <!-- Links to each Kanji section -->
+    </div>
+    
+    <!-- Kanji Sections will be added here dynamically -->
+    <div id='kanji-sections'></div>
+    
+    <!-- Link to the external JavaScript file -->
+    <script src="js/kanji.js"></script> <!-- The JS file will handle all dynamic content -->
+</body>
+</html>
