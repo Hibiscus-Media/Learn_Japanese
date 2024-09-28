@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang='en'>
-<head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'>
-<title>Kanji Practice</title>
-<link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap' rel='stylesheet'>
-<link rel='stylesheet' href='css/styles.css'>
-<link href='https://unpkg.com/aos@2.3.1/dist/aos.css' rel='stylesheet'>
-</head><body class='light'>
-<h1>Kanji Practice</h1>
-<div id='contents'><h2>Contents</h2><ul id='contents-list'></ul></div>
-<div id='kanji-sections'></div>
-<script src='js/kanji.js'></script>
-</body></html>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Kanji Practice</title>
+    <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap' rel='stylesheet'>
+    <link rel='stylesheet' href='css/styles.css'>
+    <link href='https://unpkg.com/aos@2.3.1/dist/aos.css' rel='stylesheet'>
+    <script src='https://unpkg.com/aos@2.3.1/dist/aos.js'></script>
+</head>
+<body class='light'>
+    <h1>Kanji Practice</h1>
+
+    <!-- Contents section for smooth scrolling -->
+    <div id='contents'>
+        <h2>Contents</h2>
+        <ul id='contents-list'></ul> <!-- Links to each section -->
+    </div>
+
+    <!-- Kanji sections (images) will be dynamically loaded here -->
+    <div id='kanji-sections'></div>
+
+    <!-- External JavaScript file to load Kanji sections dynamically -->
+    <script src="js/kanji.js"></script>
+</body>
+</html>
