@@ -23,21 +23,20 @@ toggle.addEventListener('change', () => {
     document.body.classList.toggle('dark-mode', toggle.checked);
 });
 
-// Add image folders manually
-const imageFolders = ['Day01', 'Day02', 'Day03', 'Day04', 'Day05', 'Day06', 'Day07', 'Day08', 'Day09', 'Day10'];
+// Populate the gallery with images dynamically from the 'Phrases' folder
 const galleryContainer = document.getElementById('gallery-container');
+const folderNames = ['Day01', 'Day02', 'Day03', 'Day04', 'Day05'];  // Add the folder names you have
 
-// Dynamically add images from the folders
-imageFolders.forEach(folder => {
-    const section = document.createElement('section');
-    section.innerHTML = `<h2>${folder}</h2><div class="gallery" data-aos="fade-up"></div>`;
+folderNames.forEach(folder => {
+    const section = document.createElement('div');
+    section.innerHTML = `<h2>${folder}</h2><div class='gallery' data-aos='fade-up'></div>`;
     galleryContainer.appendChild(section);
 
-    // Dynamically load images from each folder
-    for (let i = 1; i <= 2; i++) {
+    // Add images for each day
+    for (let i = 1; i <= 2; i++) {  // Assuming 2 images per folder (adjust based on your setup)
         const img = document.createElement('img');
-        img.src = `Phrases/${folder}/${i}.jpeg`;
-        img.alt = `Phrase Image ${i}`;
+        img.src = `Phrases/${folder}/${i}.jpeg`;  // Adjust the image paths as necessary
+        img.alt = `${folder} Image ${i}`;
         section.querySelector('.gallery').appendChild(img);
     }
 });
