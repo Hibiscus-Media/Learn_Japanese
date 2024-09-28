@@ -8,10 +8,10 @@ const options = {
         "Master Japanese with daily practice!", 
         "Enhance your language skills!"
     ],
-    typeSpeed:200,        // Speed of typing
-    backSpeed: -1,        // Speed of deleting
-    loop: true,           // Loop the animation
-    cursorChar: '|'       // Cursor character
+    typeSpeed: 100,        // Speed of typing
+    backSpeed: 50,         // Speed of deleting
+    loop: true,            // Loop the animation
+    cursorChar: '|'        // Cursor character
 };
 
 // Create a new Typed instance for the hero section heading
