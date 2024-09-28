@@ -23,20 +23,30 @@ toggle.addEventListener('change', () => {
     document.body.classList.toggle('dark-mode', toggle.checked);
 });
 
-// Populate the gallery with images dynamically from the 'Phrases' folder
+// Gallery Section: Populate dynamically with images from folders
 const galleryContainer = document.getElementById('gallery-container');
-const folderNames = ['Day01', 'Day02', 'Day03', 'Day04', 'Day05'];  // Add the folder names you have
+const folderNames = ['Day01', 'Day02', 'Day03', 'Day04', 'Day05'];  // Add all folder names
 
 folderNames.forEach(folder => {
     const section = document.createElement('div');
     section.innerHTML = `<h2>${folder}</h2><div class='gallery' data-aos='fade-up'></div>`;
     galleryContainer.appendChild(section);
 
-    // Add images for each day
-    for (let i = 1; i <= 2; i++) {  // Assuming 2 images per folder (adjust based on your setup)
+    // Add images for each folder
+    for (let i = 1; i <= 2; i++) {  // Adjust number of images if needed
         const img = document.createElement('img');
-        img.src = `Phrases/${folder}/${i}.jpeg`;  // Adjust the image paths as necessary
-        img.alt = `${folder} Image ${i}`;
+        
+        // Try .jpeg first, then fallback to .jpg
+        let imageSrc = `Phrases/${folder}/${i}.jpeg`;
+        let imageAlt = `${folder} Image ${i}`;
+        img.src = imageSrc;
+        img.alt = imageAlt;
+        
+        // Check if the .jpeg exists first
+        img.onerror = () => {
+            img.src = `Phrases/${folder}/${i}.jpg`;  // Fallback to .jpg if .jpeg not found
+        };
+
         section.querySelector('.gallery').appendChild(img);
     }
 });
