@@ -4,14 +4,14 @@ AOS.init();
 // Typed.js functionality
 const options = {
     strings: [
-        "Welcome to Daily Japanese Phrases!",
-        "Master Japanese with daily practice!",
+        "Welcome to Daily Japanese Phrases!", 
+        "Master Japanese with daily practice!", 
         "Enhance your language skills!"
     ],
-    typeSpeed: 100,
-    backSpeed: 50,
-    loop: true,
-    cursorChar: '|'
+    typeSpeed: 100,        // Speed of typing
+    backSpeed: 50,         // Speed of deleting
+    loop: true,            // Loop the animation
+    cursorChar: '|'        // Cursor character
 };
 
 // Create a new Typed instance for the hero section heading
@@ -25,7 +25,7 @@ toggle.addEventListener('change', () => {
 
 // Gallery Section: Populate dynamically with images from folders
 const galleryContainer = document.getElementById('gallery-container');
-const folderNames = ['Day01', 'Day02', 'Day03', 'Day04', 'Day05']; // Add all folder names
+const folderNames = ['Day01', 'Day02', 'Day03', 'Day04', 'Day05'];  // Add all folder names
 
 folderNames.forEach(folder => {
     const section = document.createElement('div');
