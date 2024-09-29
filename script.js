@@ -25,7 +25,7 @@ toggle.addEventListener('change', () => {
 
 // Gallery Section: Populate dynamically with images from folders
 const galleryContainer = document.getElementById('gallery-container');
-const folderNames = ['Day01', 'Day02', 'Day03', 'Day04', 'Day05'];  // Add all folder names
+const folderNames = ['Day01', 'Day02', 'Day03', 'Day04', 'Day05', 'Day06', 'Day07', 'Day08', 'Day09', 'Day10'];  // Adjust as per your folder structure
 
 folderNames.forEach(folder => {
     const section = document.createElement('div');
