@@ -42,8 +42,10 @@ folderNames.forEach(folder => {
         if (imagesProcessed === totalImagesToTry) {
             if (imagesFound > 0) {
                 galleryContainer.appendChild(section);
+                console.log(`Appended section for ${folder} with ${imagesFound} images.`);
+            } else {
+                console.log(`No images found for ${folder}, section not appended.`);
             }
-            // Else, do not append the section if no images were found
         }
     }
 
@@ -55,8 +57,10 @@ folderNames.forEach(folder => {
 
             function tryLoadImage(extension) {
                 img.src = `Phrases/${folder}/${imageIndex}.${extension}`;
+                console.log(`Attempting to load image: ${img.src}`);
 
                 img.onload = function() {
+                    console.log(`Successfully loaded image: ${img.src}`);
                     galleryDiv.appendChild(img);
                     imagesFound++;
                     imagesProcessed++;
@@ -64,6 +68,7 @@ folderNames.forEach(folder => {
                 };
 
                 img.onerror = function() {
+                    console.log(`Failed to load image: ${img.src}`);
                     if (extension === 'jpeg') {
                         // Try .jpg if .jpeg fails
                         tryLoadImage('jpg');
