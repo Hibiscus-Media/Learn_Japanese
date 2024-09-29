@@ -20,17 +20,17 @@ echo "<div class='toggle-container'><span class='toggle-label'>Light Mode</span>
 echo "<label class='switch'><input type='checkbox' id='darkModeToggle'><span class='slider'></span></label>" >> $temp_html
 echo "<span class='toggle-label'>Dark Mode</span></div>" >> $temp_html
 
-# Begin gallery section
+# Begin gallery section and ensure it is cleared before adding new content
 echo "<div id='gallery-container'>" >> $temp_html
 
 # Loop through each day's folder and add .jpeg and .jpg images dynamically
 for folder in "$image_dir"*; do
   day=$(basename "$folder")  # Extract folder name (e.g., Day01)
-  
+
   # Only proceed if there are .jpeg or .jpg files in the folder
   if ls "$folder"/*.jpeg "$folder"/*.jpg 1> /dev/null 2>&1; then
     echo "<h2>$day</h2><div class='gallery' data-aos='fade-up'>" >> $temp_html
-    
+
     # Loop through each .jpeg and .jpg file in the folder
     for img in "$folder"/*.jpeg "$folder"/*.jpg; do
       if [[ -f "$img" ]]; then  # Only process if it's a file
@@ -40,6 +40,8 @@ for folder in "$image_dir"*; do
     done
 
     echo "</div>" >> $temp_html
+  else
+    echo "<!-- No images found in $folder -->" >> $temp_html
   fi
 done
 
@@ -63,5 +65,5 @@ mv $temp_html $html_file
 
 # Stage and commit the updated HTML file
 git add $html_file
-git commit -m "Updated index.html with new images"
+git commit -m "Updated index.html with new images and cleared old content"
 git push origin main
