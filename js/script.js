@@ -26,7 +26,6 @@ toggle.addEventListener('change', () => {
 // Gallery Section: Populate dynamically with images from folders
 const galleryContainer = document.getElementById('gallery-container');
 
-// Update the folderNames array with your actual folder names
 const folderNames = ['Day01', 'Day02', 'Day03', 'Day04', 'Day05', 'Day06', 'Day07', 'Day08', 'Day09', 'Day10'];
 
 folderNames.forEach(folder => {
@@ -50,36 +49,33 @@ folderNames.forEach(folder => {
 
     // Attempt to load images
     for (let i = 1; i <= totalImagesToTry; i++) {
-        const img = new Image();
-        img.alt = `${folder} Image ${i}`;
+        (function(imageIndex) {
+            const img = new Image();
+            img.alt = `${folder} Image ${imageIndex}`;
 
-        // Try .jpeg first
-        img.src = `Phrases/${folder}/${i}.jpeg`;
+            function tryLoadImage(extension) {
+                img.src = `Phrases/${folder}/${imageIndex}.${extension}`;
 
-        img.onload = () => {
-            galleryDiv.appendChild(img);
-            imagesFound++;
-            imagesProcessed++;
-            checkAndAppendSection();
-        };
+                img.onload = function() {
+                    galleryDiv.appendChild(img);
+                    imagesFound++;
+                    imagesProcessed++;
+                    checkAndAppendSection();
+                };
 
-        img.onerror = () => {
-            // Try .jpg if .jpeg fails
-            img.onerror = null; // Remove the current error handler to prevent infinite loop
-            img.src = `Phrases/${folder}/${i}.jpg`;
+                img.onerror = function() {
+                    if (extension === 'jpeg') {
+                        // Try .jpg if .jpeg fails
+                        tryLoadImage('jpg');
+                    } else {
+                        // Both .jpeg and .jpg failed
+                        imagesProcessed++;
+                        checkAndAppendSection();
+                    }
+                };
+            }
 
-            img.onload = () => {
-                galleryDiv.appendChild(img);
-                imagesFound++;
-                imagesProcessed++;
-                checkAndAppendSection();
-            };
-
-            img.onerror = () => {
-                // Image doesn't exist
-                imagesProcessed++;
-                checkAndAppendSection();
-            };
-        };
+            tryLoadImage('jpeg');
+        })(i);
     }
 });
