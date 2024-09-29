@@ -30,23 +30,32 @@ const folderNames = ['Day01', 'Day02', 'Day03', 'Day04', 'Day05'];  // Add all f
 folderNames.forEach(folder => {
     const section = document.createElement('div');
     section.innerHTML = `<h2>${folder}</h2><div class='gallery' data-aos='fade-up'></div>`;
-    galleryContainer.appendChild(section);
-
+    
+    let hasImages = false;  // Track if the section has any valid images
+    
     // Add images for each folder
     for (let i = 1; i <= 2; i++) {  // Adjust number of images if needed
         const img = document.createElement('img');
-        
-        // Try .jpeg first, then fallback to .jpg
         let imageSrc = `Phrases/${folder}/${i}.jpeg`;
-        let imageAlt = `${folder} Image ${i}`;
         img.src = imageSrc;
-        img.alt = imageAlt;
-        
-        // Check if the .jpeg exists first
-        img.onerror = () => {
-            img.src = `Phrases/${folder}/${i}.jpg`;  // Fallback to .jpg if .jpeg not found
+        img.alt = `${folder} Image ${i}`;
+
+        img.onload = function() {
+            section.querySelector('.gallery').appendChild(img);
+            hasImages = true;  // Mark that the section has valid images
         };
 
-        section.querySelector('.gallery').appendChild(img);
+        img.onerror = function() {
+            img.src = `Phrases/${folder}/${i}.jpg`;  // Fallback to .jpg if .jpeg not found
+            img.onload = function() {
+                section.querySelector('.gallery').appendChild(img);
+                hasImages = true;
+            };
+        };
+    }
+
+    // Only append the section if it has valid images
+    if (hasImages) {
+        galleryContainer.appendChild(section);
     }
 });
