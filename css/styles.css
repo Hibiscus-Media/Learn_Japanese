@@ -238,3 +238,37 @@ button:hover {
 html {
   scroll-behavior: smooth;
 }
+
+/* Navigation Bar */
+.navbar {
+  background-color: #4CAF50;
+  overflow: hidden;
+  padding: 10px 0;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar li {
+  display: inline;
+  margin: 0 20px;
+}
+
+.navbar a {
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+  font-size: 1.2em;
+  display: inline-block;
+}
+
+.navbar a:hover {
+  background-color: #45a049;
+  color: white;
+}

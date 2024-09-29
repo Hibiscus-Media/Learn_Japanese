@@ -1,13 +1,82 @@
 <!DOCTYPE html>
 <html lang='en'>
-<head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'>
-<title>Kanji Practice</title>
-<link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap' rel='stylesheet'>
-<link rel='stylesheet' href='css/styles.css'>
-<link href='https://unpkg.com/aos@2.3.1/dist/aos.css' rel='stylesheet'>
-</head><body class='light'>
-<h1>Kanji Practice</h1>
-<div id='contents'><h2>Contents</h2><ul id='contents-list'></ul></div>
-<div id='kanji-sections'></div>
-<script src='js/kanji.js'></script>
-</body></html>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Kanji Practice</title>
+    <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap' rel='stylesheet'>
+    <link rel='stylesheet' href='css/styles.css'>
+    <link href='https://unpkg.com/aos@2.3.1/dist/aos.css' rel='stylesheet'>
+</head>
+<body class='light'>
+    <!-- Hero Section -->
+    <div class='hero'>
+        <h1 id='typed-text'></h1>
+    </div>
+
+    <!-- Light/Dark Mode Toggle -->
+    <div class='toggle-container'>
+        <span class='toggle-label'>Light Mode</span>
+        <label class='switch'>
+            <input type='checkbox' id='darkModeToggle'>
+            <span class='slider'></span>
+        </label>
+        <span class='toggle-label'>Dark Mode</span>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="kanji.html">Kanji Practice</a></li>
+            <li><a href="index.html">Daily Phrases</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class='container'>
+        <h1>Kanji Practice</h1>
+        <h2>Table of Contents</h2>
+        <ul>
+            <li><a href='#Days_Of_Week'>Days Of Week</a></li>
+            <li><a href='#Numbers'>Numbers</a></li>
+        </ul>
+
+        <h2 id='Days_Of_Week'>Days Of Week</h2>
+        <div class='gallery' data-aos='fade-up'>
+            <img src='Kanji_Folders/Days_Of_Week/1-Monday.jpeg' alt='Days Of Week image'>
+            <img src='Kanji_Folders/Days_Of_Week/2-Tuesday.jpeg' alt='Days Of Week image'>
+            <img src='Kanji_Folders/Days_Of_Week/3-Wednesday.jpeg' alt='Days Of Week image'>
+            <img src='Kanji_Folders/Days_Of_Week/4-Thursday.jpeg' alt='Days Of Week image'>
+            <img src='Kanji_Folders/Days_Of_Week/5-Friday.jpeg' alt='Days Of Week image'>
+            <img src='Kanji_Folders/Days_Of_Week/6-Saturday.jpeg' alt='Days Of Week image'>
+            <img src='Kanji_Folders/Days_Of_Week/7-Sunday.jpeg' alt='Days Of Week image'>
+            <img src='Kanji_Folders/Days_Of_Week/Banner.jpeg' alt='Days Of Week image'>
+        </div>
+
+        <h2 id='Numbers'>Numbers</h2>
+        <div class='gallery' data-aos='fade-up'>
+            <img src='Kanji_Folders/Numbers/0-numbers.jpeg' alt='Numbers image'>
+            <img src='Kanji_Folders/Numbers/1-ichi.jpeg' alt='Numbers image'>
+            <img src='Kanji_Folders/Numbers/10-jyu.jpeg' alt='Numbers image'>
+            <img src='Kanji_Folders/Numbers/2-ni.jpeg' alt='Numbers image'>
+            <img src='Kanji_Folders/Numbers/3-san.jpeg' alt='Numbers image'>
+            <img src='Kanji_Folders/Numbers/4-shi.jpeg' alt='Numbers image'>
+            <img src='Kanji_Folders/Numbers/5-go.jpeg' alt='Numbers image'>
+            <img src='Kanji_Folders/Numbers/6-roku.jpeg' alt='Numbers image'>
+            <img src='Kanji_Folders/Numbers/7-nana.jpeg' alt='Numbers image'>
+            <img src='Kanji_Folders/Numbers/8-hachi.jpeg' alt='Numbers image'>
+            <img src='Kanji_Folders/Numbers/9-kyu.jpeg' alt='Numbers image'>
+        </div>
+    </div>
+
+    <!-- AOS JavaScript for scroll animations -->
+    <script src='https://unpkg.com/aos@2.3.1/dist/aos.js'></script>
+    <script>AOS.init();</script>
+
+    <!-- Typed.js for typing animation -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <!-- Main JavaScript File -->
+    <script src='js/kanji.js'></script>
+</body>
+</html>
