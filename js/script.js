@@ -55,32 +55,23 @@ folderNames.forEach(folder => {
             const img = new Image();
             img.alt = `${folder} Image ${imageIndex}`;
 
-            function tryLoadImage(extension) {
-                img.src = `Phrases/${folder}/${imageIndex}.${extension}`;
-                console.log(`Attempting to load image: ${img.src}`);
+            const imagePath = `Phrases/${folder}/${imageIndex}.jpeg`;
+            img.src = imagePath;
+            console.log(`Attempting to load image: ${img.src}`);
 
-                img.onload = function() {
-                    console.log(`Successfully loaded image: ${img.src}`);
-                    galleryDiv.appendChild(img);
-                    imagesFound++;
-                    imagesProcessed++;
-                    checkAndAppendSection();
-                };
+            img.onload = function() {
+                console.log(`Successfully loaded image: ${img.src}`);
+                galleryDiv.appendChild(img);
+                imagesFound++;
+                imagesProcessed++;
+                checkAndAppendSection();
+            };
 
-                img.onerror = function() {
-                    console.log(`Failed to load image: ${img.src}`);
-                    if (extension === 'jpeg') {
-                        // Try .jpg if .jpeg fails
-                        tryLoadImage('jpg');
-                    } else {
-                        // Both .jpeg and .jpg failed
-                        imagesProcessed++;
-                        checkAndAppendSection();
-                    }
-                };
-            }
-
-            tryLoadImage('jpeg');
+            img.onerror = function() {
+                console.log(`Failed to load image: ${img.src}`);
+                imagesProcessed++;
+                checkAndAppendSection();
+            };
         })(i);
     }
 });
