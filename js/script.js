@@ -4,14 +4,14 @@ AOS.init();
 // Typed.js functionality
 const options = {
     strings: [
-        "Welcome to Daily Japanese Phrases!", 
-        "Master Japanese with daily practice!", 
+        "Welcome to Daily Japanese Phrases!",
+        "Master Japanese with daily practice!",
         "Enhance your language skills!"
     ],
-    typeSpeed: 100,        // Speed of typing
-    backSpeed: 50,         // Speed of deleting
-    loop: true,            // Loop the animation
-    cursorChar: '|'        // Cursor character
+    typeSpeed: 100,
+    backSpeed: 50,
+    loop: true,
+    cursorChar: '|'
 };
 
 // Create a new Typed instance for the hero section heading
@@ -25,37 +25,54 @@ toggle.addEventListener('change', () => {
 
 // Gallery Section: Populate dynamically with images from folders
 const galleryContainer = document.getElementById('gallery-container');
-const folderNames = ['Day01', 'Day02', 'Day03', 'Day04', 'Day05'];  // Add all folder names
+const folderNames = ['Day01', 'Day02', 'Day03', 'Day04', 'Day05'];  // Update as needed
 
 folderNames.forEach(folder => {
     const section = document.createElement('div');
     section.innerHTML = `<h2>${folder}</h2><div class='gallery' data-aos='fade-up'></div>`;
-    
-    let hasImages = false;  // Track if the section has any valid images
-    
+
+    let imagesLoaded = 0;  // Counter for successfully loaded images
+    const totalImages = 2; // Total number of images expected per folder
+
+    // Function to check if all images are processed
+    const checkAndAppendSection = () => {
+        if (imagesLoaded > 0) {
+            galleryContainer.appendChild(section);
+        }
+    };
+
     // Add images for each folder
-    for (let i = 1; i <= 2; i++) {  // Adjust number of images if needed
+    for (let i = 1; i <= totalImages; i++) {
         const img = document.createElement('img');
         let imageSrc = `Phrases/${folder}/${i}.jpeg`;
         img.src = imageSrc;
         img.alt = `${folder} Image ${i}`;
 
-        img.onload = function() {
+        img.onload = function () {
             section.querySelector('.gallery').appendChild(img);
-            hasImages = true;  // Mark that the section has valid images
+            imagesLoaded++;
+            if (imagesLoaded === totalImages) {
+                checkAndAppendSection();
+            }
         };
 
-        img.onerror = function() {
-            img.src = `Phrases/${folder}/${i}.jpg`;  // Fallback to .jpg if .jpeg not found
-            img.onload = function() {
+        img.onerror = function () {
+            // Try loading the .jpg version
+            img.src = `Phrases/${folder}/${i}.jpg`;
+            img.onload = function () {
                 section.querySelector('.gallery').appendChild(img);
-                hasImages = true;
+                imagesLoaded++;
+                if (imagesLoaded === totalImages) {
+                    checkAndAppendSection();
+                }
             };
-        };
-    }
-
-    // Only append the section if it has valid images
-    if (hasImages) {
-        galleryContainer.appendChild(section);
+            img.onerror = function () {
+                // Image doesn't exist; decrement totalImages
+                totalImages--;
+                if (imagesLoaded === totalImages) {
+                    checkAndAppendSection();
+                }
+            };
+        }
     }
 });
