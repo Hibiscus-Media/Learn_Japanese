@@ -25,54 +25,61 @@ toggle.addEventListener('change', () => {
 
 // Gallery Section: Populate dynamically with images from folders
 const galleryContainer = document.getElementById('gallery-container');
-const folderNames = ['Day01', 'Day02', 'Day03', 'Day04', 'Day05'];  // Update as needed
+
+// Update the folderNames array with your actual folder names
+const folderNames = ['Day01', 'Day02', 'Day03', 'Day04', 'Day05', 'Day06', 'Day07', 'Day08', 'Day09', 'Day10'];
 
 folderNames.forEach(folder => {
     const section = document.createElement('div');
     section.innerHTML = `<h2>${folder}</h2><div class='gallery' data-aos='fade-up'></div>`;
+    const galleryDiv = section.querySelector('.gallery');
 
-    let imagesLoaded = 0;  // Counter for successfully loaded images
-    const totalImages = 2; // Total number of images expected per folder
+    let imagesFound = 0;
+    let imagesProcessed = 0;
+    const totalImagesToTry = 5; // Adjust based on the maximum number of images per folder
 
-    // Function to check if all images are processed
-    const checkAndAppendSection = () => {
-        if (imagesLoaded > 0) {
-            galleryContainer.appendChild(section);
+    // Function to check if all images have been processed
+    function checkAndAppendSection() {
+        if (imagesProcessed === totalImagesToTry) {
+            if (imagesFound > 0) {
+                galleryContainer.appendChild(section);
+            }
+            // Else, do not append the section if no images were found
         }
-    };
+    }
 
-    // Add images for each folder
-    for (let i = 1; i <= totalImages; i++) {
-        const img = document.createElement('img');
-        let imageSrc = `Phrases/${folder}/${i}.jpeg`;
-        img.src = imageSrc;
+    // Attempt to load images
+    for (let i = 1; i <= totalImagesToTry; i++) {
+        const img = new Image();
         img.alt = `${folder} Image ${i}`;
 
-        img.onload = function () {
-            section.querySelector('.gallery').appendChild(img);
-            imagesLoaded++;
-            if (imagesLoaded === totalImages) {
-                checkAndAppendSection();
-            }
+        // Try .jpeg first
+        img.src = `Phrases/${folder}/${i}.jpeg`;
+
+        img.onload = () => {
+            galleryDiv.appendChild(img);
+            imagesFound++;
+            imagesProcessed++;
+            checkAndAppendSection();
         };
 
-        img.onerror = function () {
-            // Try loading the .jpg version
+        img.onerror = () => {
+            // Try .jpg if .jpeg fails
+            img.onerror = null; // Remove the current error handler to prevent infinite loop
             img.src = `Phrases/${folder}/${i}.jpg`;
-            img.onload = function () {
-                section.querySelector('.gallery').appendChild(img);
-                imagesLoaded++;
-                if (imagesLoaded === totalImages) {
-                    checkAndAppendSection();
-                }
+
+            img.onload = () => {
+                galleryDiv.appendChild(img);
+                imagesFound++;
+                imagesProcessed++;
+                checkAndAppendSection();
             };
-            img.onerror = function () {
-                // Image doesn't exist; decrement totalImages
-                totalImages--;
-                if (imagesLoaded === totalImages) {
-                    checkAndAppendSection();
-                }
+
+            img.onerror = () => {
+                // Image doesn't exist
+                imagesProcessed++;
+                checkAndAppendSection();
             };
-        }
+        };
     }
 });
