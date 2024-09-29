@@ -1,3 +1,11 @@
+import os
+
+# Path to your image directories
+image_dir = "Phrases/"
+html_file = "index.html"
+
+# Start building the HTML content
+html_content = """
 <!DOCTYPE html>
 <html lang='en'>
 <head>
@@ -11,7 +19,7 @@
 <body class='light'>
     <!-- Hero Section with Typed.js Animation -->
     <div class='hero'>
-        <h1 id='typed-text'>Welcome to Daily Japanese Phrases!</h1>
+        <h1 id='typed-text'></h1>
     </div>
 
     <!-- Light/Dark Mode Toggle -->
@@ -26,7 +34,23 @@
 
     <!-- Gallery container -->
     <div id="gallery-container">
-        <!-- GALLERY_SECTIONS_PLACEHOLDER -->
+"""
+
+# Loop through each folder in the Phrases directory
+for folder in sorted(os.listdir(image_dir)):
+    folder_path = os.path.join(image_dir, folder)
+    if os.path.isdir(folder_path):
+        # Check for images (.jpeg, .jpg) in each folder
+        images = sorted([img for img in os.listdir(folder_path) if img.endswith(('.jpeg', '.jpg'))])
+        if images:
+            html_content += f"<h2>{folder}</h2><div class='gallery' data-aos='fade-up'>\n"
+            for image in images:
+                img_path = os.path.join(folder_path, image)
+                html_content += f"<img src='{img_path}' alt='Phrase Image'>\n"
+            html_content += "</div>\n"
+
+# Close the gallery container and add the scripts at the bottom of the HTML
+html_content += """
     </div>
 
     <!-- AOS JavaScript for scroll animations -->
@@ -40,3 +64,10 @@
     <script src='js/script.js'></script>
 </body>
 </html>
+"""
+
+# Write the HTML content to index.html
+with open(html_file, "w") as f:
+    f.write(html_content)
+
+print("index.html has been updated.")
