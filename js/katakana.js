@@ -1,12 +1,10 @@
-console.log('Hiragana.js is loaded!');
-
 // Initialize AOS (Animate On Scroll) for scroll animations
 AOS.init();
 
-// Typed.js functionality for Hiragana page
+// Typed.js functionality for Katakana page
 const options = {
     strings: [
-        "Hiragana Practice"
+        "Katakana Practice"
     ],
     typeSpeed: 100,        // Speed of typing
     backSpeed: 50,         // Speed of deleting
@@ -17,42 +15,42 @@ const options = {
 // Create a new Typed instance for the hero section heading
 const typed = new Typed("#typed-text", options);
 
-// Dark mode toggle functionality for Hiragana page
+// Dark mode toggle functionality for Katakana page
 const toggle = document.getElementById('darkModeToggle');
 toggle.addEventListener('change', () => {
     document.body.classList.toggle('dark-mode', toggle.checked);
     console.log("Dark mode toggled: ", toggle.checked);
 });
 
-// Function to dynamically generate the Hiragana grid
-function createHiraganaGrid() {
-    const gridContainer = document.querySelector('.hiragana-grid');
+// Function to dynamically generate the Katakana grid
+function createKatakanaGrid() {
+    const gridContainer = document.querySelector('.katakana-grid'); // Changed to katakana-grid
     
     if (!gridContainer) {
-        console.error('Hiragana grid container not found!');
+        console.error('Katakana grid container not found!');
         return;
     }
 
-    console.log('Hiragana grid found, generating images...');
+    console.log('Katakana grid found, generating images...');
     
     // Clear any existing content before generating the grid
     gridContainer.innerHTML = '';
 
-    // Loop to generate 47 images
+    // Loop to generate 47 images (for the Katakana characters)
     for (let i = 1; i <= 47; i++) {
         const gridItem = document.createElement('div');
-        gridItem.classList.add('hiragana-item');
+        gridItem.classList.add('katakana-item'); // Changed to katakana-item
         
         const img = document.createElement('img');
-        img.src = `Hiragana/${i}.jpg`;
-        img.alt = `Hiragana Character ${i}`;
+        img.src = `Katakana/${i}.jpg`;  // Ensure the path and filenames are correct
+        img.alt = `Katakana Character ${i}`;
         
         gridItem.appendChild(img);
         gridContainer.appendChild(gridItem);
     }
 
-    console.log('Hiragana grid generated successfully.');
+    console.log('Katakana grid generated successfully.');
 }
 
 // Ensure the function is called once the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', createHiraganaGrid);
+document.addEventListener('DOMContentLoaded', createKatakanaGrid);

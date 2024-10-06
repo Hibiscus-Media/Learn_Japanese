@@ -1,23 +1,21 @@
 // Initialize AOS (Animate On Scroll) for scroll animations
 AOS.init();
 
-// Typed.js functionality
+// Typed.js functionality for Kanji page
 const options = {
     strings: [
-        "Welcome to Daily Japanese Phrases!",
-        "Master Japanese with daily practice!",
-        "Enhance your language skills!"
+        "Kanji Practice"
     ],
     typeSpeed: 100,
     backSpeed: 50,
-    loop: true,
+    loop: false,
     cursorChar: '|'
 };
 
 // Create a new Typed instance for the hero section heading
 const typed = new Typed("#typed-text", options);
 
-// Dark mode toggle functionality
+// Dark mode toggle functionality for Kanji page
 const toggle = document.getElementById('darkModeToggle');
 toggle.addEventListener('change', () => {
     document.body.classList.toggle('dark-mode', toggle.checked);

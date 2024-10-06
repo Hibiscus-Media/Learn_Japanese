@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="light">
+    {{header}} <!-- Common header content -->
+
+    <!-- Light/Dark Mode Toggle -->
+    <div class="toggle-container">
+        <span class="toggle-label">Light Mode</span>
+        <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider"></span>
+        </label>
+        <span class="toggle-label">Dark Mode</span>
+    </div>
+
+    <!-- Table of Contents -->
+    <nav>
+        {{toc}} <!-- Dynamically inserted TOC -->
+    </nav>
+
+    <!-- Main content -->
+    <main>
+        {{content}} <!-- Dynamically inserted content (images, galleries) -->
+    </main>
+
+    {{footer}} <!-- Common footer content -->
+
+    <!-- AOS JavaScript for scroll animations -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
+
+    <!-- Dark mode and other shared JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

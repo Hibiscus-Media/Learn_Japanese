@@ -1,7 +1,7 @@
 // Initialize AOS (Animate On Scroll) for scroll animations
 AOS.init();
 
-// Typed.js functionality
+// Typed.js functionality for Daily Phrases page
 const options = {
     strings: [
         "Welcome to Daily Japanese Phrases!",

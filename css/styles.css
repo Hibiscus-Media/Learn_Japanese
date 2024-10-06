@@ -272,3 +272,134 @@ html {
   background-color: #45a049;
   color: white;
 }
+/* Container for centering the grid */
+.hiragana-grid-wrapper {
+  display: flex;
+  justify-content: center; /* Center the grid horizontally */
+  padding: 20px;
+  width: 100%; /* Ensure the wrapper takes the full width of the screen */
+}
+
+/* Hiragana Grid Layout */
+.hiragana-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equally spaced columns */
+  gap: 20px;
+  max-width: 1200px; /* Optional: Limit grid width on large screens */
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Hiragana Item Image Styling */
+.hiragana-item img {
+  width: 100%; /* Fill the grid column */
+  height: auto;
+  max-width: 300px; /* Increase the max size of each image */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 768px) {
+  .hiragana-grid {
+      grid-template-columns: repeat(2, 1fr); /* Switch to 2 columns on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .hiragana-grid {
+      grid-template-columns: 1fr; /* Switch to 1 column on very small screens */
+  }
+}
+
+
+/* Dark mode image shadows */
+body.dark-mode .hiragana-item img {
+    box-shadow: 0px 8px 30px rgba(255, 255, 255, 0.15);
+}
+
+
+/* Katakana Grid Layout */
+.katakana-grid-wrapper {
+  display: flex;
+  justify-content: center; /* Center the grid horizontally */
+  padding: 20px;
+  width: 100%; /* Ensure the wrapper takes the full width of the screen */
+}
+
+.katakana-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equally spaced columns */
+  gap: 20px;
+  max-width: 1200px; /* Optional: Limit grid width on large screens */
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.katakana-item img {
+  width: 100%; /* Fill the grid column */
+  height: auto;
+  max-width: 300px; /* Increase the max size of each image */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 768px) {
+  .katakana-grid {
+      grid-template-columns: repeat(2, 1fr); /* Switch to 2 columns on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .katakana-grid {
+      grid-template-columns: 1fr; /* Switch to 1 column on very small screens */
+  }
+}
+
+/* Dark mode image shadows */
+body.dark-mode .katakana-item img {
+    box-shadow: 0px 8px 30px rgba(255, 255, 255, 0.15);
+}
+/* Container for centering the grid */
+.greetings-grid-wrapper {
+  display: flex;
+  justify-content: center; /* Center the grid horizontally */
+  padding: 20px;
+  width: 100%; /* Ensure the wrapper takes the full width of the screen */
+}
+
+/* Greetings Grid Layout */
+.greetings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equally spaced columns */
+  gap: 20px;
+  max-width: 1200px; /* Optional: Limit grid width on large screens */
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Greetings Item Image Styling */
+.greetings-item img {
+  width: 100%; /* Fill the grid column */
+  height: auto;
+  max-width: 300px; /* Max size of each image */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 768px) {
+  .greetings-grid {
+      grid-template-columns: repeat(2, 1fr); /* Switch to 2 columns on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .greetings-grid {
+      grid-template-columns: 1fr; /* Switch to 1 column on very small screens */
+  }
+}
